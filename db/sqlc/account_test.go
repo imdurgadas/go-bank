@@ -9,8 +9,8 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func createRandomAccount(t *testing.T) Account {
-	arg := CreateAccountParams{
+func createRandomAccount(t *testing.T) *Account {
+	arg := &CreateAccountParams{
 		Owner:    util.RandomOwner(),
 		Balance:  util.RandomMoney(),
 		Currency: util.RandomCurrency(),
@@ -51,7 +51,7 @@ func TestGetAccount(t *testing.T) {
 func TestUpdateAccount(t *testing.T) {
 	account1 := createRandomAccount(t)
 
-	arg := UpdateAccountParams{
+	arg := &UpdateAccountParams{
 		ID:      account1.ID,
 		Balance: util.RandomMoney(),
 	}
@@ -86,7 +86,7 @@ func TestListAccounts(t *testing.T) {
 		createRandomAccount(t)
 	}
 
-	arg := ListAccountsParams{
+	arg := &ListAccountsParams{
 		Limit:  5,
 		Offset: 5,
 	}
