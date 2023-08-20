@@ -17,6 +17,10 @@ migrate_down:
 stop:
 	docker stop pgsql
 
+start:
+	docker start pgsql
+
+
 remove:
 	docker rm pgsql
 
@@ -25,5 +29,5 @@ sqlc:
 
 test:
 	go test -v -cover ./...
-	
+
 .PHONY: postgres createdb  migrate sqlc migrate_down dropdb
