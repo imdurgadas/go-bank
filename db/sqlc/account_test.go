@@ -2,7 +2,6 @@ package db
 
 import (
 	"context"
-	"database/sql"
 	"testing"
 
 	"github.com/imdurgadas/go-bank/util"
@@ -78,7 +77,7 @@ func TestDeleteAccount(t *testing.T) {
 	account2, err := testQueries.GetAccount(context.Background(), account1.ID)
 	require.Error(t, err)
 	require.Empty(t, account2)
-	require.EqualError(t, err, sql.ErrNoRows.Error())
+	require.EqualError(t, err, ErrRecordNotFound.Error())
 }
 
 func TestListAccounts(t *testing.T) {
